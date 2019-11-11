@@ -1,0 +1,44 @@
+h1 {
+    text-align: center;
+    margin-right: 10%;
+}
+
+.city {
+    border: 1px solid lightgray;
+    text-align: left;
+    color: grey;
+    background-color: white;
+    padding: 10px;
+    padding-left: 15px;
+}
+
+.search-area {
+    padding-right: 5px;
+}
+
+.city-box {
+    line-height: 2.5em;
+    color: grey;
+    border: 1px solid lightgray;
+    padding-top: 40px;
+
+}
+
+h3 {
+    color: black;
+}
+
+.forecast {
+    margin-top: 15px;
+}
+
+.temps {
+    color: white;
+}
+
+.f-box {
+    margin-top: 30px;
+    margin-right: 22px;
+    padding: 10px 15px 20px 15px;
+    
+}
