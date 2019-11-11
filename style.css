@@ -26,6 +26,11 @@ h1 {
 
 h3 {
     color: black;
+    display: inline;
+    margin-right: 10px;
+}
+.fas {
+    margin-left: 10px;
 }
 
 .forecast {
@@ -41,4 +46,8 @@ h3 {
     margin-right: 22px;
     padding: 10px 15px 20px 15px;
     
+}
+
+.temp .wind .uv-box {
+    margin-left: 10px;
 }
