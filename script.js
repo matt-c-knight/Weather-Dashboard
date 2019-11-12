@@ -12,6 +12,7 @@ $(".day-2").text(tomorrow2.format("(MM/DD/YYYY)"));
 $(".day-3").text(tomorrow3.format("(MM/DD/YYYY)"));
 $(".day-4").text(tomorrow4.format("(MM/DD/YYYY)"));
 $(".day-5").text(tomorrow5.format("(MM/DD/YYYY)"));
+var weatherIcons = ["fas fa-cloud", "fas fa-cloud-showers-heavy", "fas fa-sun", "far fa-snowflake", "fas fa-cloud-sun"]
 var long;
 var lat;
 var uvQueryURL;
@@ -26,7 +27,10 @@ $("#button-addon2").on("click", function() {
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         tempF = tempF.toFixed(2);
         $(".temp").text(tempF);
+        console.log(response)
+        $('.humidity').text(response.main.humidity);
         $(".wind").text(response.wind.speed);
+        // fiveDayForecast(response)
         });
   });
 
@@ -43,6 +47,7 @@ $("#button-addon2").on("click", function() {
       tempF = tempF.toFixed(2);
       $(".temp").text(tempF);
       $(".wind").text(response.wind.speed);
+      $('.humidity').text(response.main.humidity);
       long = response.coord.lon;
       lat =  response.coord.lat;
       var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + apiKey;
@@ -58,24 +63,83 @@ $("#button-addon2").on("click", function() {
               url: forecast,
               method: "GET"
             }).then(function(response) { 
-              console.log(forecast)
-              var day1 = (response.list[2].main.temp - 273.15) * 1.80 + 32; 
-              day1 = day1.toFixed(2);
-              $('.day1').text(day1);
-              var day2 = (response.list[10].main.temp - 273.15) * 1.80 + 32;
-              day2 = day2.toFixed(2); 
-              $('.day2').text(day2);
-              var day3 = (response.list[18].main.temp - 273.15) * 1.80 + 32;
-              day3 = day3.toFixed(2);
-              $('.day3').text(day3);
-              var day4 = (response.list[26].main.temp - 273.15) * 1.80 + 32;
-              day4 = day4.toFixed(2); 
-              $('.day4').text(day4);
-              var day5 = (response.list[34].main.temp - 273.15) * 1.80 + 32;
-              day5 = day5.toFixed(2);
-              $('.day5').text(day5);
-          });
- 
+                // fiveDayForecast(response)
+            
+              // function fiveDayForecast(response) {
+            
+                  var day1 = (response.list[2].main.temp - 273.15) * 1.80 + 32; 
+                  day1 = day1.toFixed(2);
+                  $('.day1').text(day1);
+                  var day2 = (response.list[10].main.temp - 273.15) * 1.80 + 32;
+                  day2 = day2.toFixed(2); 
+                  $('.day2').text(day2);
+                  var day3 = (response.list[18].main.temp - 273.15) * 1.80 + 32;
+                  day3 = day3.toFixed(2);
+                  $('.day3').text(day3);
+                  var day4 = (response.list[26].main.temp - 273.15) * 1.80 + 32;
+                  day4 = day4.toFixed(2); 
+                  $('.day4').text(day4);
+                  var day5 = (response.list[34].main.temp - 273.15) * 1.80 + 32;
+                  day5 = day5.toFixed(2);
+                  $('.day5').text(day5);
+                  console.log(forecast)
+                  if(response.list[2].weather[0].main === "Clouds") {
+                    $('.day1Icon').addClass(weatherIcons[0]);
+                  } else if(response.list[2].weather[0].main === "Rain") {
+                    $('.day1Icon').addClass(weatherIcons[1]);
+                  } else if(response.list[2].weather[0].main === "Clear") {
+                    $('.day1Icon').addClass(weatherIcons[2]);
+                  } else if(response.list[2].weather[0].main === "Snow") {
+                    $('.day1Icon').addClass(weatherIcons[3]);
+                  } else {
+                    $('.day1Icon').addClass(weatherIcons[4]);
+                  }
+                  if(response.list[10].weather[0].main === "Clouds") {
+                    $('.day2Icon').addClass(weatherIcons[0]);
+                  } else if(response.list[10].weather[0].main === "Rain") {
+                    $('#day2Icon').addClass(weatherIcons[1]);
+                  } else if(response.list[10].weather[0].main === "Clear") {
+                    $('#day2Icon').addClass(weatherIcons[2]);
+                  } else if(response.list[10].weather[0].main === "Snow") {
+                    $('#day2Icon').addClass(weatherIcons[3]);
+                  } else {
+                    $('#day2Icon').addClass(weatherIcons[4]);
+                  }
+                  if(response.list[18].weather[0].main === "Clouds") {
+                    $('.day3Icon').addClass(weatherIcons[0]);
+                  } else if(response.list[18].weather[0].main === "Rain") {
+                    $('.day3Icon').addClass(weatherIcons[1]);
+                  } else if(response.list[18].weather[0].main === "Clear") {
+                    $('.day3Icon').addClass(weatherIcons[2]);
+                  } else if(response.list[18].weather[0].main === "Snow") {
+                    $('.day3Icon').addClass(weatherIcons[3]);
+                  } else {
+                    $('.day3Icon').addClass(weatherIcons[4]);
+                  }
+                  if(response.list[26].weather[0].main === "Clouds") {
+                    $('.day4Icon').addClass(weatherIcons[0]);
+                  } else if(response.list[26].weather[0].main === "Rain") {
+                    $('.day4Icon').addClass(weatherIcons[1]);
+                  } else if(response.list[26].weather[0].main === "Clear") {
+                    $('.day4Icon').addClass(weatherIcons[2]);
+                  } else if(response.list[26].weather[0].main === "Snow") {
+                    $('.day4Icon').addClass(weatherIcons[3]);
+                  } else {
+                    $('.day4Icon').addClass(weatherIcons[4]);
+                  }
+                  if(response.list[34].weather[0].main === "Clouds") {
+                    $('.day5Icon').addClass(weatherIcons[0]);
+                  } else if(response.list[34].weather[0].main === "Rain") {
+                    $('.day5Icon').addClass(weatherIcons[1]);
+                  } else if(response.list[34].weather[0].main === "Clear") {
+                    $('.day5Icon').addClass(weatherIcons[2]);
+                  } else if(response.list[34].weather[0].main === "Snow") {
+                    $('.day5Icon').addClass(weatherIcons[3]);
+                  } else {
+                    $('.day5Icon').addClass(weatherIcons[4]);
+                  }
+              
+                });
       
   });
 
