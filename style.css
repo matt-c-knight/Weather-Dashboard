@@ -46,6 +46,7 @@ h3 {
     margin-top: 30px;
     margin-right: 22px;
     padding: 20px 10px 20px 10px;
+    height: 180px;
     
 }
 
@@ -71,6 +72,14 @@ h3 {
 }
 
 .fut-tenp {
-    margin-top: 100px;
+    margin-top: 150px;
     position: fixed;
+}
+
+.fa-sun {
+    padding-top: 0;
+}
+
+.fas {
+    padding-bottom: 20px;
 }
