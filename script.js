@@ -62,10 +62,18 @@ $("#button-addon2").on("click", function() {
               var day1 = (response.list[2].main.temp - 273.15) * 1.80 + 32; 
               day1 = day1.toFixed(2);
               $('.day1').text(day1);
-              console.log((response.list[10].main.temp - 273.15) * 1.80 + 32)  
-              console.log((response.list[18].main.temp - 273.15) * 1.80 + 32) 
-              console.log((response.list[26].main.temp - 273.15) * 1.80 + 32) 
-              console.log((response.list[34].main.temp - 273.15) * 1.80 + 32) 
+              var day2 = (response.list[10].main.temp - 273.15) * 1.80 + 32;
+              day2 = day2.toFixed(2); 
+              $('.day2').text(day2);
+              var day3 = (response.list[18].main.temp - 273.15) * 1.80 + 32;
+              day3 = day3.toFixed(2);
+              $('.day3').text(day3);
+              var day4 = (response.list[26].main.temp - 273.15) * 1.80 + 32;
+              day4 = day4.toFixed(2); 
+              $('.day4').text(day4);
+              var day5 = (response.list[34].main.temp - 273.15) * 1.80 + 32;
+              day5 = day5.toFixed(2);
+              $('.day5').text(day5);
           });
  
       
