@@ -31,6 +31,7 @@ h3 {
 }
 .fas {
     margin-left: 10px;
+    
 }
 
 .forecast {
@@ -44,10 +45,26 @@ h3 {
 .f-box {
     margin-top: 30px;
     margin-right: 22px;
-    padding: 10px 15px 20px 15px;
+    padding: 20px 10px 20px 10px;
     
 }
 
-.temp .wind .uv-box {
+.temp {
     margin-left: 10px;
+}
+
+.wind {
+    margin-left: 10px;
+}
+
+.uv-box {
+    margin-left: 10px;
+}
+
+.fa-sun {
+    padding-top: 15px;
+}
+
+.fut-tenp {
+    margin-top: 15px;
 }
