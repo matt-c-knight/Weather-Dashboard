@@ -27,7 +27,7 @@ h1 {
 h3 {
     color: black;
     display: inline;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .fas {
     margin-left: 10px;
@@ -40,6 +40,7 @@ h3 {
 
 .temps {
     color: white;
+    margin-left: 5px;
 }
 
 .f-box {
