@@ -1,30 +1,33 @@
 # Weather_Dashboard
 
-$("#cat-button").on("click", function() {
+ array = [2,10,18,26,34];
+ icon = ['day1Icon','day2Icon','day3Icon','day4Icon','day5Icon']
 
-      // Storing our giphy API URL for a random cat image
-      var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
+                  for(i = 0; i < array.length; i++) {
+                    if(response.list[array[i]].weather[0].main === "Clouds") {
+                      $('.' + icon[i].removeClass('fas fa-sun').addClass(weatherIcons[0]);
+                    } else if(response.list[array[i]].weather[0].main === "Rain") {
+                      $('.' + icon[i]).removeClass('fas fa-sun').addClass(weatherIcons[1]);
+                    } else if(response.list[array[i]].weather[0].main === "Clear") {
+                      $('.' + icon[i]).removeClass('fas fa-sun').addClass(weatherIcons[2]);
+                    } else if(response.list[array[i]].weather[0].main === "Snow") {
+                      $('.' + icon[i]).removeClass('fas fa-sun').addClass(weatherIcons[3]);
+                    } else {
+                      $('.' + icon[i]).removeClass('fas fa-sun').addClass(weatherIcons[4]);
+                    }
 
-      // Perfoming an AJAX GET request to our queryURL
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
+                  }
 
-      // After the data from the AJAX request comes back
-        .then(function(response) {
 
-        // Saving the image_original_url property
-          var imageUrl = response.data.image_original_url;
 
-          // Creating and storing an image tag
-          var catImage = $("<img>");
-
-          // Setting the catImage src attribute to imageUrl
-          catImage.attr("src", imageUrl);
-          catImage.attr("alt", "cat image");
-
-          // Prepending the catImage to the images div
-          $("#images").prepend(catImage);
-        });
-    });
+                  if(response.list[array[i]].weather[0].main === "Clouds") {
+                      $('.day1Icon').removeClass('fas fa-sun').addClass(weatherIcons[0]);
+                    } else if(response.list[array[i]].weather[0].main === "Rain") {
+                      $('.day1Icon').removeClass('fas fa-sun').addClass(weatherIcons[1]);
+                    } else if(response.list[array[i]].weather[0].main === "Clear") {
+                      $('.day1Icon').removeClass('fas fa-sun').addClass(weatherIcons[2]);
+                    } else if(response.list[array[i]].weather[0].main === "Snow") {
+                      $('.day1Icon').removeClass('fas fa-sun').addClass(weatherIcons[3]);
+                    } else {
+                      $('.day1Icon').removeClass('fas fa-sun').addClass(weatherIcons[4]);
+                    }
