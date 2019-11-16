@@ -31,3 +31,22 @@
                     } else {
                       $('.day1Icon').removeClass('fas fa-sun').addClass(weatherIcons[4]);
                     }
+
+
+                    times = {
+        time: nineVal,
+        input: schedule
+    }
+    scheduleArray.push(times);
+    scheduleArray = scheduleArray.concat(JSON.parse(localStorage.getItem('schedule') || '[]'));
+    window.localStorage.setItem('schedule', JSON.stringify(scheduleArray));
+    })
+
+ 
+    citySeached = {
+      city = cityInput;
+    }
+
+    citiesArray.push(citiesSearched);
+    citiesArray = citiesArray.concat(JSON.parse(localStorage.getItem('cities') || '[]'));
+    window.localStorage.setItem('schedule', JSON.stringify(citiesArray));

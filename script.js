@@ -21,9 +21,19 @@ var lat;
 var uvQueryURL;
 var array;
 var icon;
+// var citiesSearched = [];
+var citiesArray = [];
+console.log(citiesArray[0])
 $("#button-addon2").on("click", function() {
     cityInput = $('#city-input').val();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + apiKey;
+    citiesSearched = {
+      city: cityInput
+    }
+
+    citiesArray.push(citiesSearched);
+    citiesArray = citiesArray.concat(JSON.parse(localStorage.getItem('cities') || '[]'));
+    window.localStorage.setItem('cities', JSON.stringify(citiesArray));
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -98,7 +108,13 @@ $("#button-addon2").on("click", function() {
       long = response.coord.lon;
       lat =  response.coord.lat;
       var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + apiKey;
-      
+      citiesSearched = {
+        city: cityInput
+      }
+  
+      citiesArray.push(citiesSearched);
+      citiesArray = citiesArray.concat(JSON.parse(localStorage.getItem('cities') || '[]'));
+      window.localStorage.setItem('cities', JSON.stringify(citiesArray));
         $.ajax({
           url: uvQueryURL,
           method: "GET"
@@ -152,9 +168,10 @@ $("#button-addon2").on("click", function() {
 
               
                 });
+               
       
       });
-
+     
     });
   });
 
