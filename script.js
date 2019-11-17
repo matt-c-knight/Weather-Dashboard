@@ -21,19 +21,14 @@ var lat;
 var uvQueryURL;
 var array;
 var icon;
-// var citiesSearched = [];
-var citiesArray = [];
-console.log(citiesArray[0])
+
+var cityArray = [];
+
 $("#button-addon2").on("click", function() {
     cityInput = $('#city-input').val();
+    console.log(cityInput);
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + apiKey;
-    citiesSearched = {
-      city: cityInput
-    }
-
-    citiesArray.push(citiesSearched);
-    citiesArray = citiesArray.concat(JSON.parse(localStorage.getItem('cities') || '[]'));
-    window.localStorage.setItem('cities', JSON.stringify(citiesArray));
+   myLocal(cityInput);
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -42,7 +37,7 @@ $("#button-addon2").on("click", function() {
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
         tempF = tempF.toFixed(2);
         $(".temp").text(tempF);
-        console.log(response)
+        
         $('.humidity').text(response.main.humidity);
         $(".wind").text(response.wind.speed);
        
@@ -94,7 +89,7 @@ $("#button-addon2").on("click", function() {
   $(".city").on("click", function() {
     cityInput = $(this).data('name');
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityInput + apiKey;
-    
+    myLocal(cityInput)
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -108,22 +103,8 @@ $("#button-addon2").on("click", function() {
       long = response.coord.lon;
       lat =  response.coord.lat;
       var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + apiKey;
-      citiesSearched = {
-        city: cityInput
-      }
-  
-      citiesArray.push(citiesSearched);
-      citiesArray = citiesArray.concat(JSON.parse(localStorage.getItem('cities') || '[]'));
-      window.localStorage.setItem('cities', JSON.stringify(citiesArray));
-        $.ajax({
-          url: uvQueryURL,
-          method: "GET"
-          }) .then(function(response) {
-            $(".uv").text(response[0].value)
-            })
+      
            
-            
-            
             var forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + apiKey + "&count=10";
             $.ajax({
               url: forecast,
@@ -164,15 +145,22 @@ $("#button-addon2").on("click", function() {
                                      }
                  
                                    }
-                
-
-              
-                });
-               
-      
+              });
       });
-     
+      
     });
+
+    function myLocal(cityInput) {
+    citySearched = {
+      city: cityInput
+    }
+
+    cityArray.push(citySearched);
+    cityArray = cityArray.concat(JSON.parse(localStorage.getItem('cities') || '[]'));
+    window.localStorage.setItem('cities', JSON.stringify(cityArray));
+    
+
+  }
   });
 
 
